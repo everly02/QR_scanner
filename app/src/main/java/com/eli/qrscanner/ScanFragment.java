@@ -180,32 +180,27 @@ public class ScanFragment extends Fragment implements ImageAnalysis.Analyzer, Ac
     }
 
     private void handleUrl(String url) {
-        // 处理URL类型的二维码
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(browserIntent);
     }
 
     private void handleText(String text) {
-        // 处理文本类型的二维码
         resultTextView.setText(text);
     }
 
     private void handlePhoneNumber(String phoneNumber) {
-        // 处理电话号码类型的二维码
         Intent intent = new Intent(Intent.ACTION_DIAL);
         intent.setData(Uri.parse("tel:" + phoneNumber));
         startActivity(intent);
     }
 
     private void handleEmail(String email) {
-        // 处理电子邮件类型的二维码
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:" + email));
         startActivity(intent);
     }
 
     private void handleUnknown(String result) {
-        // 处理未知类型的二维码
         resultTextView.setText("未知类型: " + result);
     }
     public void resetHandledFlag() {
